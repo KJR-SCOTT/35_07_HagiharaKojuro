@@ -63,6 +63,15 @@ if($status==false){
      <label>パスワード：<input type="text" name="pass" required></label><br>
      <br>
 <!-- 管理者フラグの立て方をどうするか-->
+     <label>スーパー管理者ですか？：
+     <input type="radio" name="kanri_flg" value="1"required> はい
+     <input type="radio" name="kanri_flg" value="0"> いいえ
+     </label><br>
+     <label>使用中ですか？：
+     <input type="radio" name="life_flg" value="0"required> はい
+     <input type="radio" name="life_flg" value="1"> いいえ
+     </label><br>
+     
      <input type="submit" value="送信">
     </fieldset>
   </div>

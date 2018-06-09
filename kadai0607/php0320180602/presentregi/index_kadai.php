@@ -12,7 +12,7 @@
 <header>
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-    <div class="navbar-header"><a class="navbar-brand" href="select_kadai.php">ユーザー一覧</a></div>
+    <div class="navbar-header"><a class="navbar-brand" href="select_kadai.php">登録プレゼント一覧</a></div>
   </nav>
 </header>
 <!-- Head[End] -->

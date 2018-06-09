@@ -29,7 +29,7 @@ if($status==false){
     //id=の後に変数をいれる//'..'の中に変数
 
     // 【質問】flgをどうするか！？
-    $view .= $result["name"]."[".$result["mail"]."]"."[".$result["pass"]."]";
+    $view .= $result["name"]."[".$result["lid"]."]"."[".$result["lpw"]."]";
 
     $view .='</a>';
     //ここから削除

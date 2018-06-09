@@ -4,7 +4,9 @@
 if(
   !isset($_POST["name"]) || $_POST["name"]=="" ||
   !isset($_POST["mail"]) || $_POST["mail"]=="" ||
-  !isset($_POST["pass"]) || $_POST["pass"]=="" 
+  !isset($_POST["pass"]) || $_POST["pass"]=="" || 
+  !isset($_POST["kanri_flg"]) || $_POST["kanri_flg"]=="" ||
+  !isset($_POST["life_flg"]) || $_POST["life_flg"]=="" 
 ){
   exit('ParamError');
 }
@@ -14,6 +16,8 @@ $id = $_POST["id"];
 $name = $_POST["name"];
 $mail = $_POST["mail"];
 $pass = $_POST["pass"];
+$kanri_flg = $_POST["kanri_flg"];
+$life_flg = $_POST["life_flg"];
 
 //2. DB接続します(エラー処理追加)
 //functions.phpの関数を呼び出してる
@@ -25,13 +29,15 @@ $pdo =db_conn();
 //prepareがSQLを書くという意味
 //【要変更】
 
-$stmt = $pdo->prepare("UPDATE gs_user_table SET name=:a1, lid=:a2, lpw=:a3, =:a4 WHERE id=:id");
+$stmt = $pdo->prepare("UPDATE gs_user_table SET name=:a1, lid=:a2, lpw=:a3, kanri_flg=:a4, life_flg=:a5 WHERE id=:id");
 
-$stmt->bindValue(':a1', $present);
-$stmt->bindValue(':a2', $amount);
-$stmt->bindValue(':a3', $uses);
-$stmt->bindValue(':a4', $sense);
+$stmt->bindValue(':a1', $name);
+$stmt->bindValue(':a2', $mail);
+$stmt->bindValue(':a3', $pass);
+$stmt->bindValue(':a4', $kanri_flg);
+$stmt->bindValue(':a5', $life_flg);
 $stmt->bindValue(':id', $id);
+
 
 $status = $stmt->execute();
 

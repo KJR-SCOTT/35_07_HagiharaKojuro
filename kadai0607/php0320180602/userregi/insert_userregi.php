@@ -2,18 +2,22 @@
 //入力チェック(受信確認処理追加)
 //【要変更】
 if(
-  !isset($_POST["name"]) || $_POST["name"]=="" ||
-  !isset($_POST["mail"]) || $_POST["mail"]=="" ||
-  !isset($_POST["pass"]) || $_POST["pass"]=="" 
-){
-  exit('ParamError');
-}
+   !isset($_POST["name"]) || $_POST["name"]=="" ||
+   !isset($_POST["lid"]) || $_POST["lid"]=="" ||
+   !isset($_POST["lpw"]) || $_POST["lpw"]=="" || 
+   !isset($_POST["kanri_flg"]) || $_POST["kanri_flg"]=="" ||
+   !isset($_POST["life_flg"]) || $_POST["life_flg"]=="" 
+ ){
+   exit('ParamError');
+ }
 
 //1. POSTデータ取得
 //【要変更】
 $name = $_POST["name"];
-$mail = $_POST["mail"];
-$pass = $_POST["pass"];
+$lid = $_POST["lid"];
+$lpw = $_POST["lpw"];
+$kanri_flg = $_POST["kanri_flg"];
+$life_flg = $_POST["life_flg"];
 
 
 //2. DB接続します(エラー処理追加)
@@ -25,13 +29,13 @@ $pdo =db_conn();
 //３．データ登録SQL作成
 //prepareがSQLを書くという意味
 //要変更
-$stmt = $pdo->prepare("INSERT INTO gs_user_table(id, name, lid, lpw,
-kanri_flg, life_flg )VALUES(NULL, :a1, :a2, :a3, :a4, :a5");
+$stmt = $pdo->prepare("INSERT INTO gs_user_table (id, name, lid, lpw,
+kanri_flg, life_flg) VALUES (NULL, :a1, :a2, :a3, :a4, :a5)");
 $stmt->bindValue(':a1', $name);
-$stmt->bindValue(':a2', $mail);
-$stmt->bindValue(':a3', $pass);
-$stmt->bindValue(':a4', $aaaa);
-$stmt->bindValue(':a5', $bbbb);
+$stmt->bindValue(':a2', $lid);
+$stmt->bindValue(':a3', $lpw);
+$stmt->bindValue(':a4', $kanri_flg);
+$stmt->bindValue(':a5', $life_flg);
 //$stmtの関数を実行せよ！の意味
 $status = $stmt->execute();
 
